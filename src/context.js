@@ -19,8 +19,6 @@ const AppProvider = ({children}) =>{
     const data= await response.json(response);
     if(data.meals.length >0){
     setMeals(data.meals)}
-     
-     
     }
     catch(err){
       console.log('error',err)
@@ -46,15 +44,14 @@ const AppProvider = ({children}) =>{
     if(found) return
     const updatefav =[...favmeals,meal];
     setFavMeals(updatefav)
-   
    }
    const removeMeal = (idMeal) =>{
-   
     const meal= favmeals.filter((meal)=> meal.idMeal!== idMeal);
     setFavMeals(meal)
    
    }
   useEffect(()=> {
+        
         fetchData(`${allMealsURL}${searchTerm}`);
     }
        ,[searchTerm]);
